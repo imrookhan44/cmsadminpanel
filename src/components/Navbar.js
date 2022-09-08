@@ -1,10 +1,15 @@
 import { Nav, Container, Navbar } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
 function Header() {
   let navigate = useNavigate();
 
   const logout = () => {
     localStorage.removeItem("token");
+    toast.success("user Logout success")
     // window.location.reload();
     navigate('/login')
   }
