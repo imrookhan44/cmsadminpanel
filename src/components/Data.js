@@ -5,6 +5,8 @@ function Data() {
   useEffect(() => {
     registeredComplaint()
       .then((res) => {
+        console.log("data res:", res.data)
+        console.log("res:", res)
         setData(res.data);
       })
       .catch((err) => {
@@ -20,6 +22,8 @@ function Data() {
             <th scope="col">Name</th>
             <th scope="col">Number</th>
             <th scope="col">ComplaintType</th>
+            <th scope="col">Complaint Detail</th>
+            
             <th scope="col">ConcernedPerson</th>
             <th scope="col">Date</th>
             <th scope="col">Action</th>
@@ -34,6 +38,7 @@ function Data() {
                 <td>{item.name}</td>
                 <td>{item.number}</td>
                 <td>{item.complaintType}</td>
+                <td>{ item.complaintDetail}</td>
                 <td>{item.concernedPerson}</td>
                 <td>{item.createdDate}</td>
                 <td>  <select name="" id="" onChange={
