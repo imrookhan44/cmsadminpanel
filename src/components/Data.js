@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { registeredComplaint } from "./../APi/index";
+import { registeredComplaint, complaintStatus } from "./../APi/index";
 function Data() {
   const [data, setData] = useState([]);
   useEffect(() => {
@@ -22,6 +22,8 @@ function Data() {
             <th scope="col">ComplaintType</th>
             <th scope="col">ConcernedPerson</th>
             <th scope="col">Date</th>
+            <th scope="col">Action</th>
+
           </tr>
         </thead>
         <tbody>
@@ -34,7 +36,28 @@ function Data() {
                 <td>{item.complaintType}</td>
                 <td>{item.concernedPerson}</td>
                 <td>{item.createdDate}</td>
+                <td>  <select name="" id="" onChange={
+                  (event) => {
+                    const data = {
+                      status: event.target.value,
+                      id: item._id,
+                    };
+                    complaintStatus(data)
+                      .then((res) => {
+                        console.log("res in status::", res);
+                      })
+                      .catch((error) => {
+                        console.log(error);
+                        alert("there is an error");
+                      });
+                  }
+
+                }   >
+                <option value="completed">completed</option>
+                <option value="resolved">progress</option>
+              </select> </td>
               </tr>
+
             );
           })}
         </tbody>
