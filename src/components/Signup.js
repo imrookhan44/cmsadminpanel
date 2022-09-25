@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./login.css";
 import { registerUser } from './../APi/index'
+import { toast } from "react-toastify"
+import 'react-toastify/dist/ReactToastify.css';
+
 import {useNavigate} from 'react-router-dom'
 function Signup() {
   let navigate = useNavigate();
@@ -21,14 +24,20 @@ function Signup() {
     registerUser(data)
       .then((res) => {
         console.log("res in signup:", res);
-        console.log("res.data.message in signup:", res.data.token);
+        console.log("res.data.message in signup:", res.data);
 
         if (res.data.message === "user has been registered") {
           localStorage.setItem("token", res.data.token);
-         alert(res.data.message)
+          alert(res.data);
+        //   toast.success(res.data, {
+        //    theme: "colored"
+        //  })
           navigate("/");
         } else {
-          alert(res.message)
+          // toast.error(res.data, {
+          //   theme: "colored"
+          // })
+          alert(res.data);
         }
       })
       .catch((error) => {
