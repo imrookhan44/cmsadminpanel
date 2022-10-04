@@ -3,7 +3,7 @@ import { loginUser } from "./../APi/index";
 import { useNavigate } from "react-router-dom";
 import "./login.css";
 function Login() {
-  let navigate  = useNavigate()
+  let navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -17,12 +17,10 @@ function Login() {
         console.log("res in login::", res);
         if (res.data.message === "user login Successfully") {
           localStorage.setItem("token", res.data.token);
-          alert(res.data.message)
+          alert(res.data.message);
           navigate("/");
-        }
-        else {
-
-          alert(res.data.message)
+        } else {
+          alert(res.data.message);
         }
       })
       .catch((error) => {
@@ -34,64 +32,55 @@ function Login() {
 
   return (
     <div className="app ">
+      <div className="">
+        <div className="card card-container mt-5 pt-5" id="Card">
+          <img
+            src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
+            alt="profile-img"
+            className="profile-img-card"
+          />
 
-        <div className="">
-          <div className="card card-container mt-5 pt-5" id="Card">
-            <img
-              src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
-              alt="profile-img"
-              className="profile-img-card"
-            />
-
-            <div >
-              <div className="form-group mt-2">
-                <label className="Email">Email</label>
-                <input
-                  type="email"
-                  required="required"
-                  className="form-control"
+          <div>
+            <div className="form-group mt-2">
+              <label className="Email">Email</label>
+              <input
+                type="email"
+                required="required"
+                className="form-control"
                 name="email"
                 value={email}
                 onChange={(event) => {
                   setEmail(event.target.value);
                 }}
+              />
+            </div>
 
-                />
+            <div className="form-group mt-2">
+              <label className="Email">Password</label>
+              <input
+                type="password"
+                className="form-control"
+                value={password}
+                onChange={(event) => {
+                  setPassword(event.target.value);
+                }}
+              />
+            </div>
 
-              </div>
-
-              <div className="form-group mt-2">
-                <label className="Email">Password</label>
-                <input
-                  type="password"
-                  className="form-control"
-                  value={password}
-                  onChange={(event) => {
-                    setPassword(event.target.value);
-                  }}
-                />
-
-              </div>
-
-              <div className="form-group">
-                <button
-
-                  className="btn btn-primary  mt-3"
-                  id="Login"
-                  onClick={() => login()}
-
-
-                >
-                  Login
-                </button>
-              </div>
+            <div className="form-group">
+              <button
+                className="btn btn-primary  mt-3"
+                id="Login"
+                onClick={() => login()}
+              >
+                Login
+              </button>
             </div>
           </div>
         </div>
-
+      </div>
     </div>
   );
 }
 
 export default Login;
-
