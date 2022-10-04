@@ -15,7 +15,7 @@ function Login() {
     loginUser(data)
       .then((res) => {
         console.log("res in login::", res);
-        if (res) {
+        if (res.data.message === "user login Successfully") {
           localStorage.setItem("token", res.data.token);
           alert(res.data.message)
           navigate("/");

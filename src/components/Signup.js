@@ -27,12 +27,11 @@ function Signup() {
         console.log("res.data.message in signup:", res.data);
 
         if (res.data.message === "user has been registered") {
-          localStorage.setItem("token", res.data.token);
           alert(res.data);
         //   toast.success(res.data, {
         //    theme: "colored"
         //  })
-          navigate("/");
+          navigate("/login");
         } else {
           // toast.error(res.data, {
           //   theme: "colored"
