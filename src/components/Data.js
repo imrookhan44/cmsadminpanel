@@ -23,7 +23,7 @@ function Data() {
             <th scope="col">Number</th>
             <th scope="col">ComplaintType</th>
             <th scope="col">Complaint Detail</th>
-            
+
             <th scope="col">ConcernedPerson</th>
             <th scope="col">Date</th>
             <th scope="col">Action</th>
@@ -34,6 +34,7 @@ function Data() {
           {data?.map((item, index) => {
             return (
               <tr key={index.id}>
+                {/* skdfhksjdvgd */}
                 <th scope="row">{index + 1}</th>
                 <td>{item.name}</td>
                 <td>{item.number}</td>
